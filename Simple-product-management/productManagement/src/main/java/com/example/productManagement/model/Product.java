@@ -14,16 +14,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "product")
 public class Product {
 
+    // the ID of the product
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    private long productId;
+    private Long productId;
 
+    // the name of the product
     @Column
     @NotNull
     @NotBlank
     private String productName;
 
+    // the price
     @Column
     @NotNull
     private double productPrice;

@@ -1,12 +1,13 @@
 package com.example.productManagement.dto;
 
+import com.example.productManagement.model.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-// DTO class to update the product
+
 @Data
-public class UpdateProduct {
+public class ProductDto {
 
     @NotNull
     @NotEmpty
@@ -16,9 +17,15 @@ public class UpdateProduct {
     @NotBlank
     private String productName;
 
+
     @NotNull
     @NotEmpty
     private double productPrice;
 
+    public ProductDto(Product product) {
+        this.productId = product.getProductId();
+        this.productName = product.getProductName();
+        this.productPrice = product.getProductPrice();
+    }
 
 }

@@ -5,16 +5,17 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+// DTO class for creating products
 @Data
 public class CreateProduct {
 
-    @NotEmpty
-    @NotNull
-    private long productID;
 
     @NotNull
     @NotBlank
     private String productName;
 
+    @NotNull
+    @NotEmpty
+    private double productPrice;
 
 }
