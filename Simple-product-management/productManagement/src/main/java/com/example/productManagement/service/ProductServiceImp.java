@@ -4,10 +4,12 @@ import com.example.productManagement.dao.ProductRepository;
 import com.example.productManagement.dto.CreateProduct;
 import com.example.productManagement.dto.ProductDto;
 import com.example.productManagement.dto.UpdateProduct;
+import com.example.productManagement.exception.BadRequestException;
 import com.example.productManagement.model.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,14 +35,39 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public boolean updateProduct(UpdateProduct product) throws Exception {
-        // will continue
-        return false;
+
+        Optional<Product> isExist = productRepository.findByProductIdAndProductNameAndProductPrice(product.getProductId(),
+                                                                                                   product.getProductName(),
+                                                                                                   product.getProductPrice());
+
+        if (isExist.isEmpty()){
+            throw new BadRequestException("Product not found or not exist");
+        }
+
+        Product existingProduct = isExist.get();
+        existingProduct.setProductName(product.getProductName());
+        existingProduct.setProductPrice(product.getProductPrice());
+
+        productRepository.save(existingProduct);
+
+        return true;
     }
 
     @Override
-    public int createProduct(CreateProduct product) throws Exception {
-        // will continue
-        return 0;
+    public Long createProduct(CreateProduct product) throws BadRequestException {
+        Optional<Product> foundProduct = productRepository.findById(product.getProductId());
+
+        if (foundProduct.isPresent()){
+            throw new BadRequestException("Product already exists: " + product.getProductId());
+        }
+        Product newProduct = new Product();
+        newProduct.setProductId(product.getProductId());
+        newProduct.setProductName(product.getProductName());
+        newProduct.setProductPrice(product.getProductPrice());
+
+        productRepository.save(newProduct);
+
+        return newProduct.getProductId();
     }
 
     @Override

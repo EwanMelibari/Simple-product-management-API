@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository <Product, Long> {
 
-    Optional<Product> findByProductIdAndProductNameAndProductPrice(Integer productId, String productName, double productPrice) throws Exception;
+    Optional<Product> findByProductIdAndProductNameAndProductPrice(Long productId, String productName, double productPrice) throws Exception;
 
 }

@@ -16,7 +16,7 @@ public interface ProductService {
     public boolean updateProduct(UpdateProduct product) throws Exception;
 
     // For creating a product
-    public int createProduct(CreateProduct product) throws Exception;
+    public Long createProduct(CreateProduct product) throws Exception;
 
     // To get all the products
     public List<ProductDto> findAllProducts() throws Exception;

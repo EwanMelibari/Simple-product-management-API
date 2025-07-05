@@ -9,6 +9,10 @@ import lombok.Data;
 @Data
 public class CreateProduct {
 
+    @NotNull
+    @NotEmpty
+    private Long productId;
+
 
     @NotNull
     @NotBlank
