@@ -46,7 +46,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/product/delete")
-    public ResponseEntity<Object> deleteProduct(@Valid @RequestBody Product product){
+    public ResponseEntity<Object> deleteProduct(@Valid @RequestBody Product product) throws  Exception {
         productService.deleteProduct(product);
         return ResponseEntity.status(204).build();
     }
