@@ -10,7 +10,6 @@ import lombok.Data;
 public class ProductDto {
 
     @NotNull
-    @NotEmpty
     private Long productId;
 
     @NotNull
@@ -19,7 +18,6 @@ public class ProductDto {
 
 
     @NotNull
-    @NotEmpty
     private double productPrice;
 
     public ProductDto(Product product) {

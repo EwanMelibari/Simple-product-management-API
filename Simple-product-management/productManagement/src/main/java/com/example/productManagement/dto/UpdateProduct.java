@@ -9,7 +9,6 @@ import lombok.Data;
 public class UpdateProduct {
 
     @NotNull
-    @NotEmpty
     private Long productId;
 
     @NotNull
@@ -17,7 +16,6 @@ public class UpdateProduct {
     private String productName;
 
     @NotNull
-    @NotEmpty
     private double productPrice;
 
 
