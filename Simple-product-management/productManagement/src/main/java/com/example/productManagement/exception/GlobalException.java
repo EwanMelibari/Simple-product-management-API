@@ -14,18 +14,18 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalException extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String,String> errorMessages = new HashMap<>();
-
-        ex.getBindingResult().getFieldErrors().forEach(error -> {
-            errorMessages.put(error.getField(), error.getDefaultMessage());
-        });
-
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(errorMessages);
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
+//        Map<String,String> errorMessages = new HashMap<>();
+//
+//        ex.getBindingResult().getFieldErrors().forEach(error -> {
+//            errorMessages.put(error.getField(), error.getDefaultMessage());
+//        });
+//
+//        return ResponseEntity
+//                .status(HttpStatus.BAD_REQUEST)
+//                .body(errorMessages);
+//    }
 
 
     @ExceptionHandler(BadRequestException.class)
